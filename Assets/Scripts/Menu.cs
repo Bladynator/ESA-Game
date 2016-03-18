@@ -55,7 +55,7 @@ public class Menu : MonoBehaviour
                     }
                     break;
                 }
-            case 1:
+            case -2:
                 {
                     if (GUI.Button(new Rect(Screen.width / 2 - 125, Screen.height / 3, 125, 50), "AIM"))
                     {
@@ -71,7 +71,7 @@ public class Menu : MonoBehaviour
                     }
                     break;
                 }
-            case 2:
+            case 1:
                 {
                     int p = 0;
                     for(int i = 1 + (lastMiniGameNumberToShow - 9); i < lastMiniGameNumberToShow; i++)
