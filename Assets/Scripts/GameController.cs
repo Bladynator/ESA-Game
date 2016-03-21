@@ -118,12 +118,10 @@ public class GameController : MonoBehaviour
             {
                 if (GUI.Button(new Rect(0, 0, 150, 60), back, smallFont))
                 {
-                    once = false;
                     paused = false;
                     toLevelSelect = true;
                     inGame = false;
-                    doneWithAnimation = false;
-                    SceneManager.LoadScene("MainMenu");
+                    WinScreenButton("MainMenu");
                 }
                 if (won)
                 {
@@ -135,18 +133,11 @@ public class GameController : MonoBehaviour
                     }
                     if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), next, smallFont))
                     {
-                        once = false;
-                        Time.timeScale = 1;
-                        doneWithAnimation = false;
-                        SceneManager.LoadScene("MainMenu");
+                        WinScreenButton("MainMenu");
                     }
                     if (GUI.Button(new Rect(Screen.width / 1.3f, 0, 150, 50), restart, smallFont))
                     {
-                        once = false;
-                        Time.timeScale = 1;
-                        doneWithMiniGame = false;
-                        doneWithAnimation = false;
-                        SceneManager.LoadScene(lastMiniGame.ToString());
+                        WinScreenButton(lastMiniGame.ToString());
                     }
                 }
                 else
@@ -154,11 +145,7 @@ public class GameController : MonoBehaviour
                     GUI.Label(new Rect(Screen.width / 2, 50, 100, 50), "Try Again");
                     if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), restart, smallFont))
                     {
-                        once = false;
-                        Time.timeScale = 1;
-                        doneWithMiniGame = false;
-                        doneWithAnimation = false;
-                        SceneManager.LoadScene(lastMiniGame.ToString());
+                        WinScreenButton(lastMiniGame.ToString());
                     }
                 }
                 GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height - 150, 100, 50), "Unlocks:");
@@ -168,6 +155,15 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    void WinScreenButton(string newScene)
+    {
+        once = false;
+        Time.timeScale = 1;
+        doneWithMiniGame = false;
+        doneWithAnimation = false;
+        SceneManager.LoadScene(newScene);
     }
 
     void ShowUnlocks(int i, int lastLevel)

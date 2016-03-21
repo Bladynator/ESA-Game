@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Asteroid
   - BlueHuman
+  - Connect
   layers:
   - Default
   - TransparentFX

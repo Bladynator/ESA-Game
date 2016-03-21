@@ -190,10 +190,10 @@ MonoBehaviour:
   next: {fileID: 2800000, guid: 6c4c3f55b4394c7419183185d519a3d3, type: 3}
   levelImages:
   - {fileID: 0}
-  - {fileID: 2800000, guid: 664a81ceee5e7e043899c672dc01da30, type: 3}
+  - {fileID: 2800000, guid: 4073c8c219d35ec44b381335af8a78d3, type: 3}
   - {fileID: 2800000, guid: 65922625407cd5342bcf2c504f00a2a7, type: 3}
   - {fileID: 2800000, guid: ac6bfb07faeeff745ba809d590de46f0, type: 3}
-  - {fileID: 0}
+  - {fileID: 2800000, guid: 6049d7c2e7b9d424e810e17917cc41a9, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
