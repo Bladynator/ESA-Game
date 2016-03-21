@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour 
 {
     [SerializeField]
-    Texture2D locked;
+    Texture2D locked, back, next;
+    [SerializeField]
+    Texture2D[] levelImages = new Texture2D[33];
     public int activeScreen = 0;
     GameController gameController;
     int lastMiniGameNumberToShow = 9;
@@ -21,7 +23,7 @@ public class Menu : MonoBehaviour
         if(gameController.toLevelSelect)
         {
             gameController.toLevelSelect = false;
-            activeScreen = 2;
+            activeScreen = 1;
         }
         if(gameController.doneWithMiniGame)
         {
@@ -36,7 +38,7 @@ public class Menu : MonoBehaviour
     {
         if (activeScreen > 0)
         {
-            if (GUI.Button(new Rect(0, 0, 100, 50), "Back"))
+            if (GUI.Button(new Rect(0, 0, 100, 50), back, smallFont))
             {
                 GameObject.Find("Menu").GetComponent<Menu>().activeScreen--;
             }
@@ -84,14 +86,14 @@ public class Menu : MonoBehaviour
                     }
                     if (lastMiniGameNumberToShow != 33)
                     {
-                        if (GUI.Button(new Rect(Screen.width / 2 + 125, Screen.height / 3, 125, 50), "Next Pack"))
+                        if (GUI.Button(new Rect(Screen.width / 2 + 125, Screen.height / 3, 125, 50), next, smallFont))
                         {
                             lastMiniGameNumberToShow += 8;
                         }
                     }
                     if(lastMiniGameNumberToShow != 9)
                     {
-                        if (GUI.Button(new Rect(10, Screen.height / 3, 125, 50), "Previous Pack"))
+                        if (GUI.Button(new Rect(10, Screen.height / 3, 125, 50), back, smallFont))
                         {
                             lastMiniGameNumberToShow -= 8;
                         }
@@ -101,7 +103,7 @@ public class Menu : MonoBehaviour
             case -1:
                 {
                     GUI.TextArea(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 50, 100, 100), trivia[miniGameToLoad], smallFont);
-                    if (GUI.Button(new Rect(Screen.width - 125, Screen.height - 50, 125, 50), "Next"))
+                    if (GUI.Button(new Rect(Screen.width - 125, Screen.height - 50, 125, 50), next, smallFont))
                     {
                         gameController.inGame = true;
                         gameController.lastMiniGame = miniGameToLoad;
@@ -120,10 +122,19 @@ public class Menu : MonoBehaviour
         {
             xOffset -= 4;
         }
-        if (GUI.Button(new Rect(100 + (xOffset * 75), Screen.height / 3 + (p * 50), 75, 50), i.ToString()))
+        if (gameController.lastLevelCleared >= i - 1)
         {
-            activeScreen = -1;
-            miniGameToLoad = i;
+            if (GUI.Button(new Rect(100 + (xOffset * 75), Screen.height / 3 + (p * 50), 75, 50), levelImages[i]))
+            {
+                activeScreen = -1;
+                miniGameToLoad = i;
+            }
+        }
+        else
+        {
+            if (GUI.Button(new Rect(100 + (xOffset * 75), Screen.height / 3 + (p * 50), 75, 50), locked))
+            {
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ public class Satellite : MonoBehaviour
     {
         if(other.gameObject.tag == "Asteroid")
         {
-            controller.points -= 2;
+            controller.points -= 20;
             Destroy(other.gameObject);
         }
     }

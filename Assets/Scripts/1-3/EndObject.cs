@@ -16,6 +16,7 @@ public class EndObject : MonoBehaviour
     {
         if (total == 3)
         {
+            points = 91;
             gameController.totalScore = points;
             gameController.doneWithMiniGame = true;
             gameController.won = true;

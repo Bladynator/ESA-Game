@@ -51,6 +51,19 @@ public class ControllerLevel1 : MonoBehaviour
                     temp.SetActive(false);
                 }
             }
+
+            if(points <= 0)
+            {
+                gameController.totalScore = points;
+                gameController.doneWithMiniGame = true;
+                gameController.won = false;
+                end = true;
+                GameObject[] asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
+                foreach (GameObject temp in asteroids)
+                {
+                    temp.SetActive(false);
+                }
+            }
         }
 	}
 

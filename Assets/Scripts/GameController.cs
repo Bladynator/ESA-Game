@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public bool inGame = false;
     bool paused = false;
     [SerializeField]
-    Texture2D pauseButton, playButton;
+    Texture2D pauseButton, playButton, locked, back, next, restart;
     public GUIStyle smallFont;
     public int totalScore;
     public bool toLevelSelect = false, doneWithMiniGame = false, won = false;
@@ -20,16 +20,18 @@ public class GameController : MonoBehaviour
     AwesomeScript awesomeScript;
     [SerializeField]
     SaveLoad saveLoad;
+    [SerializeField]
+    FailedScript failedScript;
 
     // Account Stats
     string NAMEFILE = "SaveDataPlayer";
     int[,] unlocks = new int[32, 3];
     int[,] pointsNeededForUnlock = new int[32, 3] { // 4 packs, each 8 minigames
-    { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100},
+    { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 95, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100},
     { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100},
     { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100},
     { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100}, { 80, 90, 100},};
-    int lastLevelCleared;
+    public int lastLevelCleared;
     int[] highestScores = new int[32];
     // End 
 
@@ -74,7 +76,7 @@ public class GameController : MonoBehaviour
             {
                 paused = false;
             }
-            if (GUI.Button(new Rect(0, 100, 50, 50), "Back"))
+            if (GUI.Button(new Rect(0, 100, 50, 50), back, smallFont))
             {
                 paused = false;
                 toLevelSelect = true;
@@ -87,51 +89,98 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1; // unpause game
         }
 
-        if(doneWithMiniGame && !once)
+        if (doneWithMiniGame)
         {
-            once = true;
-            Instantiate(awesomeScript);
-            if (totalScore > highestScores[lastMiniGame])
+            if (!once) // Start() after minigame
             {
-                CheckUnlocks(lastMiniGame, totalScore);
-                SaveData(unlocks, lastLevelCleared, highestScores);
+                once = true;
+                if (won)
+                {
+                    Instantiate(awesomeScript);
+                    if (lastLevelCleared < lastMiniGame)
+                    {
+                        lastLevelCleared = lastMiniGame;
+                    }
+                }
+                else
+                {
+                    Instantiate(failedScript);
+                }
+                if (totalScore > highestScores[lastMiniGame])
+                {
+                    highestScores[lastMiniGame] = totalScore;
+                    CheckUnlocks(lastMiniGame, totalScore);
+                    SaveData(unlocks, lastLevelCleared, highestScores);
+                }
             }
-        }
 
-        if(doneWithAnimation && doneWithMiniGame)
-        {
-            //GUI.TextArea(new Rect(0, 0, Screen.width, Screen.height),"");
-            if (GUI.Button(new Rect(0, Screen.height / 2 - 30, 150, 60), "Back"))
+            if (doneWithAnimation) // Update() after minigame
             {
-                once = false;
-                paused = false;
-                toLevelSelect = true;
-                inGame = false;
-                SceneManager.LoadScene("MainMenu");
-            }
-            if (won)
-            {
-                //GUI.Label(new Rect(Screen.width / 2, 50, 100, 50), "You Win!!!");
-                GUI.Label(new Rect(Screen.width / 2, Screen.height / 4, 100, 50), totalScore.ToString());
-                if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), "Next Level"))
+                if (GUI.Button(new Rect(0, 0, 150, 60), back, smallFont))
                 {
                     once = false;
-                    Time.timeScale = 1;
+                    paused = false;
+                    toLevelSelect = true;
+                    inGame = false;
+                    doneWithAnimation = false;
                     SceneManager.LoadScene("MainMenu");
                 }
-            }
-            else
-            {
-                GUI.Label(new Rect(Screen.width / 2, 50, 100, 50), "Try Again");
-                if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), "Restart"))
+                if (won)
                 {
-                    once = false;
-                    Time.timeScale = 1;
-                    doneWithMiniGame = false;
-                    SceneManager.LoadScene("MainMenu");
+                    GUI.Label(new Rect(Screen.width / 2, Screen.height / 4, 100, 50), "Current Score: " + totalScore.ToString());
+                    GUI.Label(new Rect(Screen.width / 1.5f, Screen.height / 4, 100, 50), "Highest Score: " + highestScores[lastMiniGame].ToString());
+                    if(totalScore == highestScores[lastMiniGame])
+                    {
+                        GUI.Label(new Rect(Screen.width / 2, Screen.height / 3, 100, 50), "New Highscore!!");
+                    }
+                    if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), next, smallFont))
+                    {
+                        once = false;
+                        Time.timeScale = 1;
+                        doneWithAnimation = false;
+                        SceneManager.LoadScene("MainMenu");
+                    }
+                    if (GUI.Button(new Rect(Screen.width / 1.3f, 0, 150, 50), restart, smallFont))
+                    {
+                        once = false;
+                        Time.timeScale = 1;
+                        doneWithMiniGame = false;
+                        doneWithAnimation = false;
+                        SceneManager.LoadScene(lastMiniGame.ToString());
+                    }
+                }
+                else
+                {
+                    GUI.Label(new Rect(Screen.width / 2, 50, 100, 50), "Try Again");
+                    if (GUI.Button(new Rect(Screen.width / 1.3f, Screen.height / 2, 150, 50), restart, smallFont))
+                    {
+                        once = false;
+                        Time.timeScale = 1;
+                        doneWithMiniGame = false;
+                        doneWithAnimation = false;
+                        SceneManager.LoadScene(lastMiniGame.ToString());
+                    }
+                }
+                GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height - 150, 100, 50), "Unlocks:");
+                for(int i = 0; i < 3; i++)
+                {
+                    ShowUnlocks(i, lastMiniGame);
                 }
             }
         }
+    }
+
+    void ShowUnlocks(int i, int lastLevel)
+    {
+        if (unlocks[lastLevel, i] == 0)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 140 + (i * 40), 100, 50), locked);
+        }
+        else
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height - 125 + (i * 40), 100, 50), "C");
+        }
+        GUI.Label(new Rect(Screen.width / 2 - 25, Screen.height - 125 + (i * 40), 100, 50), pointsNeededForUnlock[lastLevel,i].ToString());
     }
 
     void CheckUnlocks(int level, int score)
@@ -155,7 +204,6 @@ public class GameController : MonoBehaviour
     {
         // format: unlocks                                  lastLevel           highestScores
         // format: 0e0e0.. <e> 0e0e0.. <e> 0e0e0..  <BR> 1              <BR>    0e0e0e0e0...
-        lastLevel--;
         string SAVEDATA = "";
         for (int i = 0; i < 3; i++)
         {

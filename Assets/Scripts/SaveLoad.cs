@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 
 public class SaveLoad : MonoBehaviour
 {
@@ -65,5 +66,17 @@ public class SaveLoad : MonoBehaviour
             path = path.Substring(0, path.LastIndexOf('/'));
             return Path.Combine(path, filename);
         }
+    }
+
+    public void writeImageToFile(Texture2D imageToSave)
+    {
+        imageToSave.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        imageToSave.Apply();
+        byte[] bytes = imageToSave.EncodeToPNG();
+        Destroy(imageToSave);
+        string result = System.Text.Encoding.UTF8.GetString(bytes);
+
+        string IMAGE = "Image" + DateTime.Now.ToString();
+        writeStringToFile(result, IMAGE);
     }
 }

@@ -186,6 +186,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: {fileID: 2800000, guid: 51a9c57d37678874ba8ea65da830736d, type: 3}
+  back: {fileID: 2800000, guid: 2ddb167ad6ef79b46a7f00012b68deae, type: 3}
+  next: {fileID: 2800000, guid: 6c4c3f55b4394c7419183185d519a3d3, type: 3}
+  levelImages:
+  - {fileID: 0}
+  - {fileID: 2800000, guid: 664a81ceee5e7e043899c672dc01da30, type: 3}
+  - {fileID: 2800000, guid: 65922625407cd5342bcf2c504f00a2a7, type: 3}
+  - {fileID: 2800000, guid: ac6bfb07faeeff745ba809d590de46f0, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   activeScreen: 0
   trivia:
   - none

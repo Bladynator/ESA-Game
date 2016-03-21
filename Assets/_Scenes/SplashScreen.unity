@@ -127,6 +127,10 @@ MonoBehaviour:
   inGame: 0
   pauseButton: {fileID: 2800000, guid: 947df636667a26c46ab5199b44ff57ea, type: 3}
   playButton: {fileID: 2800000, guid: 64bb004cccd39274fb7246dfe7125ed4, type: 3}
+  locked: {fileID: 2800000, guid: 51a9c57d37678874ba8ea65da830736d, type: 3}
+  back: {fileID: 2800000, guid: 2ddb167ad6ef79b46a7f00012b68deae, type: 3}
+  next: {fileID: 2800000, guid: 6c4c3f55b4394c7419183185d519a3d3, type: 3}
+  restart: {fileID: 2800000, guid: dcb2e835288562d4f8505db14c7b42c7, type: 3}
   smallFont:
     m_Name: 
     m_Normal:
@@ -194,6 +198,8 @@ MonoBehaviour:
   doneWithAnimation: 0
   awesomeScript: {fileID: 11492110, guid: dd19999358f4c994286bfb80e8d22d31, type: 2}
   saveLoad: {fileID: 1411177801}
+  failedScript: {fileID: 11459402, guid: 340031cddad61884798a3344d046c3ea, type: 2}
+  lastLevelCleared: 0
 --- !u!1 &801287644
 GameObject:
   m_ObjectHideFlags: 0
