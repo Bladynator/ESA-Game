@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   versionNumber: 0.1
-  background: {fileID: 2800000, guid: 10cbf0fb3f19ffe4eb2629747961c450, type: 3}
+  background: {fileID: 2800000, guid: 556da752a0987ec4e96e26fc3d0c38d2, type: 3}
 --- !u!4 &801287646
 Transform:
   m_ObjectHideFlags: 0
