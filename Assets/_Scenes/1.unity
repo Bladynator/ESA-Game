@@ -94,11 +94,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -7.87
+      value: -8.28
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalPosition.z
@@ -114,11 +114,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.7047916
+      value: 0.0009961231
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.7094145
+      value: 0.9999995
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_RootOrder
@@ -135,27 +135,31 @@ Prefab:
     - target: {fileID: 21285504, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4073c8c219d35ec44b381335af8a78d3,
+      objectReference: {fileID: 21300000, guid: c4fca9cd0a43b9841ae36276b45c48b6,
         type: 3}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalScale.x
-      value: 1.985811
+      value: 2.0502155
       objectReference: {fileID: 0}
     - target: {fileID: 434560, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.2558753
+      value: 1.5047148
       objectReference: {fileID: 0}
     - target: {fileID: 6182248, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_Offset.x
-      value: -0.000013207655
+      value: 0.851984
       objectReference: {fileID: 0}
     - target: {fileID: 6182248, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_Offset.y
-      value: -1.1613795
+      value: 0.12721574
       objectReference: {fileID: 0}
     - target: {fileID: 6182248, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
       propertyPath: m_Size.y
-      value: 0.39869025
+      value: 6.463478
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182248, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
+      propertyPath: m_Size.x
+      value: 0.26667815
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffd35911c16b5644d99e14ce0333c949, type: 2}
@@ -276,16 +280,15 @@ MonoBehaviour:
   asteroid: {fileID: 11423102, guid: 3d208eaee624426429d4bacd2f237e76, type: 2}
   points: 100
   maxSpawn: 50
-  timer: 20
   randomSize:
-  - 2
-  - 4
+  - 0
+  - 0
   randomSpawnSpeed:
-  - 0.1
-  - 1
+  - 0
+  - 0
   randomSpeed:
-  - 0.15
-  - 0.35
+  - 0
+  - 0
 --- !u!4 &1842798363
 Transform:
   m_ObjectHideFlags: 0

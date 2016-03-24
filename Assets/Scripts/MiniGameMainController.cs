@@ -51,7 +51,7 @@ public class MiniGameMainController : MonoBehaviour
     {
         if (!end)
         {
-            GUI.Label(new Rect(Screen.width / 2, 0, 40, 40), points.ToString());
+//            GUI.Label(new Rect(Screen.width / 2, 0, 40, 40), points.ToString());
             GUI.Label(new Rect(Screen.width / 2 + 60, 0, 140, 40), "Time Left: " + timer.ToString());
         }
     }
