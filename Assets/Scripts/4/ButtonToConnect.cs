@@ -5,7 +5,7 @@ public class ButtonToConnect : MonoBehaviour
 {
     public int number;
     Color color;
-    public GameController4 controller;
+    public ControllerLevel4 controller;
 
     void Start()
     {

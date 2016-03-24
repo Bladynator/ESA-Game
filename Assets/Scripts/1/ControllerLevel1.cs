@@ -8,7 +8,6 @@ public class ControllerLevel1 : MiniGameMainController
     Asteroid asteroid;
     Vector2 randomPosition;
     bool waitingForSpawn = false;
-    public int points = 100;
     [SerializeField]
     int maxSpawn = 50;
     [SerializeField]
@@ -17,6 +16,7 @@ public class ControllerLevel1 : MiniGameMainController
     public override void Start()
     {
         base.Start();
+        points = 100;
     }
 
     public override void Update () 

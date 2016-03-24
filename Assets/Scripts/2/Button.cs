@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Button : MonoBehaviour 
 {
-    Bar bar;
+    ControllerLevel2 bar;
     [SerializeField]
     float increaseValue;
 
     void Start()
     {
-        bar = GameObject.Find("Bar").GetComponent<Bar>();
+        bar = GameObject.Find("ControllerLevel2").GetComponent<ControllerLevel2>();
     }
 
     void OnMouseDown()

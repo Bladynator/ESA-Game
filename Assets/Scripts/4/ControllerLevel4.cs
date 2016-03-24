@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameController4 : MonoBehaviour
+public class ControllerLevel4 : MiniGameMainController
 {
     [SerializeField]
     ButtonToConnect button;
@@ -17,15 +17,10 @@ public class GameController4 : MonoBehaviour
     List<int> excludedNumbers = new List<int>();
     Quaternion rotation;
     int level = 0, levelPlaying = 1, amountToShow = 8;
-    GameController gameController;
-
-    void Start ()
+    
+    public override void Update()
     {
-        gameController = GameObject.Find("GameController").GetComponent<GameController>();
-    }
-
-    void Update()
-    {
+        base.Update();
         switch(level)
         {
             case -1:
@@ -91,7 +86,7 @@ public class GameController4 : MonoBehaviour
                         {
                             temp.GetComponent<SpriteRenderer>().color = Color.black;
                         }
-                        temp.controller = this.gameObject.GetComponent<GameController4>();
+                        temp.controller = this.gameObject.GetComponent<ControllerLevel4>();
                         temp.number = i;
                     }
                     level = -1;
@@ -132,9 +127,7 @@ public class GameController4 : MonoBehaviour
         }
         if(totalConnected == 6)
         {
-            gameController.totalScore = 89;
-            gameController.doneWithMiniGame = true;
-            gameController.won = true;
+            WinState(true, timer * 7, " ");
         }
     }
 }

@@ -5,6 +5,7 @@ public class MiniGameMainController : MonoBehaviour
 {
     protected GameController gameController;
     protected int timer = 20;
+    public int points;
     protected bool minigameTimerWait = false;
     protected bool timerAtZero = false;
     protected bool end = false;
@@ -16,7 +17,7 @@ public class MiniGameMainController : MonoBehaviour
 	
 	public virtual void Update ()
     {
-        if (!minigameTimerWait)
+        if (!minigameTimerWait && !timerAtZero)
         {
             if(timer <= 0)
             {
@@ -36,6 +37,11 @@ public class MiniGameMainController : MonoBehaviour
 
     public void WinState(bool won, int points, string tagToDestroy)
     {
+        timerAtZero = true;
+        if(points > 100)
+        {
+            points = 100;
+        }
         gameController.totalScore = points;
         gameController.doneWithMiniGame = true;
         gameController.won = won;
@@ -47,11 +53,11 @@ public class MiniGameMainController : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    public virtual void OnGUI()
     {
         if (!end)
         {
-//            GUI.Label(new Rect(Screen.width / 2, 0, 40, 40), points.ToString());
+            GUI.Label(new Rect(Screen.width / 2, 0, 40, 40), points.ToString());
             GUI.Label(new Rect(Screen.width / 2 + 60, 0, 140, 40), "Time Left: " + timer.ToString());
         }
     }

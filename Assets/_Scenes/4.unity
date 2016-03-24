@@ -230,7 +230,7 @@ GameObject:
   - 4: {fileID: 768846652}
   - 114: {fileID: 768846653}
   m_Layer: 0
-  m_Name: GameController4
+  m_Name: ControllerLevel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
