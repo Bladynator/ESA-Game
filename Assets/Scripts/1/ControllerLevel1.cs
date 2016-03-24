@@ -26,9 +26,9 @@ public class ControllerLevel1 : MiniGameMainController
         {
             if (!waitingForSpawn && maxSpawn > 0)
             {
-                int randomHeight = UnityEngine.Random.Range(-4, 4);
+                int randomHeight = Random.Range(-4, 4);
                 randomPosition = new Vector2(this.transform.position.x, randomHeight);
-                float randomSpawnSpeedDone = UnityEngine.Random.Range(randomSpawnSpeed[0], randomSpawnSpeed[1]);
+                float randomSpawnSpeedDone = Random.Range(randomSpawnSpeed[0], randomSpawnSpeed[1]);
                 StartCoroutine(waitForSec(randomSpawnSpeedDone, randomPosition));
             }
             
@@ -48,9 +48,9 @@ public class ControllerLevel1 : MiniGameMainController
     {
         waitingForSpawn = true;
         Asteroid asteroidTemp = (Asteroid)Instantiate(asteroid, randomPosition, this.transform.rotation);
-        float randomSpeedDone = UnityEngine.Random.Range(-randomSpeed[0], -randomSpeed[1]);
+        float randomSpeedDone = Random.Range(-randomSpeed[0], -randomSpeed[1]);
         asteroidTemp.speed = randomSpeedDone;
-        float randomSizeDone = UnityEngine.Random.Range(randomSize[0], randomSize[1]);
+        float randomSizeDone = Random.Range(randomSize[0], randomSize[1]);
         asteroidTemp.transform.localScale = new Vector2(randomSizeDone, randomSizeDone);
         yield return new WaitForSeconds(sec);
         maxSpawn--;
